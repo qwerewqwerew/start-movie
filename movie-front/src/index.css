@@ -1,0 +1,24 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Pretendard Variable", sans-serif;
+}
+@layer components {
+  body {
+    @apply bg-black;
+  }
+  .btn-primary {
+    @apply bg-yellow-400 text-black hover:bg-yellow-300;
+  }
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-500;
+  }
+  .btn-ghost {
+    @apply text-white hover:text-yellow-400;
+  }
+  .btn-secondary {
+    @apply bg-gray-800 text-white hover:bg-gray-700 disabled:opacity-30;
+  }
+}
