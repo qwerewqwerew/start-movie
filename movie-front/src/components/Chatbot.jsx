@@ -5,7 +5,7 @@ import { Button } from "./UI.jsx";
 
 let BACKEND = "https://start-movie-ja9c.onrender.com/chat";
 //BACKEND = "http://127.0.0.1:8000/chat";
-
+//deactivate
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([{ role: "bot", text: "안녕하세요! 영화에 대해 무엇이든 물어보세요" }]);
