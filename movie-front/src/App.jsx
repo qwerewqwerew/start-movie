@@ -32,7 +32,7 @@ export default function App() {
       <Header />
       <Outlet context={ctx} />
       <Footer />
-      <Chatbot /
+      <Chatbot />
     </>
   );
 }
