@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart ,faStar} from "@fortawesome/free-solid-svg-icons";
 export function Card({ item }) {
   const poster = `https://image.tmdb.org/t/p/w500/${item.poster_path}`;
   return (
