@@ -1,23 +1,38 @@
-name: PR Build Check
+name: PR Build Check # 워크플로우 이름
 
 on:
   pull_request:
-    branches: [dev]
+    branches: [dev, main] # dev 또는 main으로 향하는 PR이 열릴 때 실행
 
 jobs:
-  build-frontend:
-    runs-on: ubuntu-latest
+  build-frontend: # 프론트엔드 빌드 체크 job
+    runs-on: ubuntu-latest # 최신 우분투 환경에서 실행
     defaults:
       run:
-        working-directory: movie-front
+        working-directory: movie-front # 모든 step의 기본 실행 경로를 movie-front로 고정
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v4 # 저장소 코드를 runner에 내려받기
+      - uses: actions/setup-node@v4 # Node.js 환경 세팅
         with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: movie-front/package-lock.json
-      - run: npm ci
-      - run: npm run build
+          node-version: 22 # Node.js 22버전 사용
+          cache: npm # npm 캐시 활성화로 설치 속도 향상
+          cache-dependency-path: movie-front/package-lock.json # 캐시 기준 파일 경로
+      - run: npm ci # package-lock.json 기준으로 의존성 정확히 설치
+      - run: npm run build # 프로덕션 빌드 실행 (실패 시 PR 머지 차단)
         env:
-          VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
+          VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }} # GitHub Secrets에서 API키 주입
+
+  build-backend: # 백엔드 빌드 체크 job
+    runs-on: ubuntu-latest # 최신 우분투 환경에서 실행
+    defaults:
+      run:
+        working-directory: movie-back # 모든 step의 기본 실행 경로를 movie-back으로 고정
+    steps:
+      - uses: actions/checkout@v4 # 저장소 코드를 runner에 내려받기
+      - uses: actions/setup-python@v5 # Python 환경 세팅
+        with:
+          python-version: "3.11" # Python 3.11버전 사용
+      - run: pip install -r requirements.txt # fastapi, uvicorn, requests, python-dotenv 설치
+      - run: python -m py_compile main.py # main.py 문법 오류 검사
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }} # GitHub Secrets에서 HF 토큰 주입
