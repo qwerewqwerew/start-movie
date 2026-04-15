@@ -39,7 +39,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://start-movie-1.onrender.com"],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -56,7 +56,6 @@ HF_MODEL = "Qwen/Qwen2.5-7B-Instruct"
 def ask_ai(q: str) -> str:
     token = os.getenv("HF_TOKEN")
     headers = {"Authorization": f"Bearer {token}"}
-    print("API Response:", data)
     payload = {
         "model": HF_MODEL,
         "messages": [{"role": "user", "content": q}],
