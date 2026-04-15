@@ -50,7 +50,7 @@ class Msg(BaseModel):
 
 
 HF_URL = "https://router.huggingface.co/v1/chat/completions"
-HF_MODEL = "Qwen/Qwen2.5-72B-Instruct"
+HF_MODEL = "Qwen/Qwen2.5-7B-Instruct"
 
 
 def ask_ai(q: str) -> str:
