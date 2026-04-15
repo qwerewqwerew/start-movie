@@ -9,6 +9,7 @@ import { ErrorPage } from "./components/ErrorPage.jsx";
 import { Category } from "./components/Category.jsx";
 // 리액트는 컴포넌트간의 연결을 하기위한 라우터 설정과정이 필요함
 import { createBrowserRouter, RouterProvider } from "react-router";
+import EyeGuardWidget from "./components/EyeGuardWidget";
 
 const router = createBrowserRouter([
   {
@@ -32,5 +33,6 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
+    <EyeGuardWidget />
   </StrictMode>,
 );

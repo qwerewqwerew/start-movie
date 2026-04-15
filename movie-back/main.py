@@ -6,6 +6,7 @@ import requests, httpx, asyncio, os
 from dotenv import load_dotenv
 
 # .env 파일에서 환경변수 로드 (HF_TOKEN, RENDER_EXTERNAL_URL 등)
+# .env 파일에서 환경변수 로드 (HF_TOKEN, RENDER_EXTERNAL_URL 등)
 load_dotenv()
 
 # Render 환경변수에서 백엔드 자신의 URL 읽기. 로컬 실행 시 localhost로 대체

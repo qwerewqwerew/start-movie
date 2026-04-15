@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart ,faStar} from "@fortawesome/free-solid-svg-icons";
 export function Card({ item }) {
   const poster = `https://image.tmdb.org/t/p/w500/${item.poster_path}`;
   return (
@@ -8,7 +8,7 @@ export function Card({ item }) {
       <Link to={`/movie/${item.id}`}>
         <div className="aspect-[2/3] relative overflow-hidden rounded-md">
           <img className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110" src={poster} alt={item.title} />
-             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
             <p className="text-white text-sm line-clamp-3">{item.overview}</p>
             <div className="flex items-center gap-1 mt-2 text-yellow-400">
               <FontAwesomeIcon icon={faStar} className="text-xs" />
@@ -23,6 +23,7 @@ export function Card({ item }) {
             <FontAwesomeIcon icon={faHeart} />
             <span>{item.vote_average}</span>
             <span className="font-medium">{item.release_date}</span>
+            <span className="font-medium">{item.homepage}</span>
           </span>
         </div>
       </Link>

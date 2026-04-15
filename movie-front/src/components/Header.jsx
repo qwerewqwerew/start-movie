@@ -8,6 +8,7 @@ export function Header() {
         <Link to="/">
           <span className="text-2xl font-bold text-yellow-400">GOFLEX</span>
         </Link>
+        <span className="text-2xl font-bold">추가</span>
       </Container>
     </header>
   );
